@@ -1,0 +1,57 @@
+spring:
+  application:
+    name: user-center
+  profiles:
+    active: dev
+---
+#mybatis-plus配置自增策略
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: AUTO
+server:
+  port: 8082
+spring:
+  profiles: dev
+  datasource:
+    #>=6.x com.mysql.cj.jdbc.Driver
+    #<=5.x com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/user_center?characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    #密码需要用双引号
+    password: "#INCLUDE12345"
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        namespace: 5d1d5b0f-d00a-43f4-8706-901c97ee698f
+        #集群划分
+        cluster-name: NJ
+    stream:
+      rocketmq:
+        binder:
+          name-server: localhost:9876
+      bindings:
+        input:
+          destination: add_bonus
+          group: add_bonus_group
+  #rocketmq
+#rocketmq:
+#  name-server: localhost:9876
+logging:
+  level:
+    com.alibaba.nacos: error
+
+#jwt配置
+jwt:
+  secret: aaabbbcccdddeeefffggghhhiiijjjkkklllmmmnnnooopppqqqrrrsssttt
+  expire-time-in-second: 1209600
+  signatureAlgorithm: HS256
+#微信配置
+wx:
+  appId: wx03922d8f0a87ef5a
+  secret: 1ead52e8cdaa68fa792d75100d4ff85d
+---
+spring:
+  profiles: prod
