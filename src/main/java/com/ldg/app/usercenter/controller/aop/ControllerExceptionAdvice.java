@@ -4,6 +4,7 @@ import com.ldg.app.enums.ReslutCode;
 import com.ldg.app.exception.UnauthenticationException;
 import com.ldg.app.exception.UnauthorizationException;
 import com.ldg.app.response.ReslutDto;
+import me.chanjar.weixin.common.error.WxErrorException;
 import org.apache.commons.lang.NullArgumentException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -56,6 +57,8 @@ public class ControllerExceptionAdvice {
     }
 
 
+
+
     /**
      * 处理空参数异常
      *
@@ -73,6 +76,22 @@ public class ControllerExceptionAdvice {
                 , HttpStatus.NOT_FOUND
         );
     }
-
+    /**
+     * 处理请求非法参数异常
+     *
+     * @param e
+     * @return
+     */
+    @ExceptionHandler({IllegalArgumentException.class, WxErrorException.class})
+    public ResponseEntity<ReslutDto> illegalArgumentExceptionHandler(Exception e) {
+        return new ResponseEntity<>(
+                ReslutDto.builder()
+                        .msg(e.getMessage())
+                        .code(ReslutCode.BadRequest.getCode())
+                        .data(ReslutCode.BadRequest.getMsg())
+                        .build()
+                , HttpStatus.BAD_REQUEST
+        );
+    }
 
 }

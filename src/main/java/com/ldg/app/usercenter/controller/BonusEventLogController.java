@@ -3,6 +3,7 @@ package com.ldg.app.usercenter.controller;
 import com.ldg.app.entity.BonusEventLog;
 import com.ldg.app.usercenter.service.BonusEventLogService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,8 +30,8 @@ public class BonusEventLogController {
      * @param id 主键
      * @return 单条数据
      */
-    @GetMapping("selectOne")
-    public BonusEventLog selectOne(Integer id) {
+    @GetMapping("selectOne/{id}")
+    public BonusEventLog selectOne(@PathVariable Integer id) {
         return this.bonusEventLogService.queryById(id);
     }
 

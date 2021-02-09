@@ -36,17 +36,25 @@ spring:
         input:
           destination: add_bonus
           group: add_bonus_group
-  #rocketmq
+  #zipkin
+  zipkin:
+
+    #zipkin server的地址
+    base-url: http://localhost:9411
+  #sleuth
+  sleuth:
+    sampler:
+      #抽样率(100%)
+      probability: 1.0
 #rocketmq:
 #  name-server: localhost:9876
 logging:
   level:
     com.alibaba.nacos: error
-
 #jwt配置
 jwt:
   secret: aaabbbcccdddeeefffggghhhiiijjjkkklllmmmnnnooopppqqqrrrsssttt
-  expire-time-in-second: 1209600
+  expire-time-in-second: 180
   signatureAlgorithm: HS256
 #微信配置
 wx:

@@ -64,6 +64,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!--nacos配置中心-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
         <!--mybatis-plus-->
         <dependency>
             <groupId>com.baomidou</groupId>
@@ -101,6 +106,16 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!--zipkin包含sleuth-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
+<!--        &lt;!&ndash;整合sleuth&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-sleuth</artifactId>-->
+<!--        </dependency>-->
         <!--微信依赖-->
         <dependency>
             <groupId>com.github.binarywang</groupId>
